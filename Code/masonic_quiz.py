@@ -124,6 +124,7 @@ if not st.session_state.quiz_started:
 
 
 
+
         st.session_state.name = st.text_input("Enter your name:")
         st.session_state.degree = st.selectbox("Select Degree Level:", list(question_bank.keys()))
         start_clicked = st.form_submit_button("Start Quiz")

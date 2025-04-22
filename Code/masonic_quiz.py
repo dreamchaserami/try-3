@@ -140,7 +140,8 @@ elif not st.session_state.completed:
     q_idx = st.session_state.current_q
     q_text, opts, correct_letter = q_list[q_idx]
 
-    st.image("phoenix9.png", width=200)
+    st.image("https://raw.githubusercontent.com/dreamchaserami/try-3/main/Images/phoenix9.png", width=200)
+
 
     st.progress(q_idx / len(q_list))
     st.subheader(f"Question {q_idx + 1} of {len(q_list)}")

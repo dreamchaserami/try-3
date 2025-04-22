@@ -120,7 +120,7 @@ st.title("🔥 Phoenix Nine Proficiency Exam")
 # ---- QUIZ SETUP ---- #
 if not st.session_state.quiz_started:
     with st.form("start_form"):
-        st.image("phoenix9.png", width=350)
+        https://github.com/dreamchaserami/try-3/blob/main/Images/phoenix9.png
 
 
         st.session_state.name = st.text_input("Enter your name:")

@@ -44,9 +44,7 @@ question_bank = {
         ("What is the Masonic word of the Entered Apprentice?", ["Boaz", "Jachin", "Mah-Hah-Bone", "Tubal-Cain"], "a", "Boaz represents strength."),
         ("What is the traditional penalty for violating your obligation?", ["Throat cut and tongue torn out", "Exile from lodge", "Loss of right hand", "Public shame"], "a", "It is a symbolic penalty emphasizing secrecy and integrity."),
         ("What are the working tools of an Entered Apprentice?", ["Twenty-four inch gauge and common gavel", "Plumb and level", "Trowel and setting maul", "Square and compasses"], "a", "These tools represent moral duties and personal improvement.")
-    ], "a", "These represent the spiritual and moral guidance of Masonry."),
-        ...
-    ],
+    ],  # Full 30 EA questions will be inserted
     "Fellow Craft": [
         ("What is the wage of a Fellow Craft?", ["Corn, wine, oil", "Knowledge and wisdom", "Five orders of architecture", "Brotherly love, relief, truth"], "a", "These represent symbolic wages given for faithful service."),
         ("Where is the winding staircase?", ["Second degree lodge", "East side of the temple", "Between pillars", "Behind the altar"], "a", "The winding staircase symbolizes the spiritual journey of the Mason."),
@@ -77,24 +75,7 @@ question_bank = {
         ("What do the arts and sciences develop?", ["Moral and mental faculties", "Temple tools", "Pillar placement", "Sacred geometry"], "a", "They nurture intellect and virtue."),
         ("What sense is most emphasized in FC?", ["Hearing", "Sight", "Smell", "Taste"], "a", "Hearing is vital for learning and ritual."),
         ("What does the staircase ascend to?", ["Middle Chamber", "Third Degree", "Heaven", "Temple altar"], "a", "It symbolizes the journey to wisdom and reward.")
-    ] "a", "These represent symbolic wages given for faithful service."),
-        ("Where is the winding staircase?", ["Second degree lodge", "East side of the temple", "Between pillars", "Behind the altar"], "a", "The winding staircase symbolizes the spiritual journey of the Mason."),
-        ("How many steps lead to the Middle Chamber?", ["3", "7", "15", "33"], "c", "Fifteen steps are symbolically ascended in the Fellow Craft degree."),
-        ("What do the three steps represent?", ["Youth, manhood, age", "Faith, hope, charity", "Earth, wind, fire", "Heaven, earth, sea"], "a", "These represent the stages of life in a Mason's journey."),
-        ("What are the five orders of architecture?", ["Doric, Ionic, Corinthian, Composite, Tuscan", "Greek, Roman, Gothic, Modern, Renaissance", "Arch, Pillar, Keystone, Truss, Beam", "Romanesque, Gothic, Doric, Ionic, Baroque"], "a", "These are classical orders that inspire Masonic structure and teaching."),
-        ("What do the Seven Liberal Arts and Sciences represent?", ["Basis of Masonic education", "Masonic virtues", "Jewels of the Lodge", "Levels of initiation"], "a", "They form the educational foundation of Freemasonry."),
-        ("Which art includes the study of speech?", ["Logic", "Rhetoric", "Grammar", "Astronomy"], "b", "Rhetoric is the art of persuasive and structured speech."),
-        ("Which art involves mathematical principles?", ["Arithmetic", "Logic", "Grammar", "Astronomy"], "a", "Arithmetic is the science of numbers and their properties."),
-        ("What does the Middle Chamber symbolize?", ["Temple of Solomon", "Masonic enlightenment", "Mystical gateway", "Spiritual reward"], "b", "It represents the internal chamber of knowledge and truth."),
-        ("What tool represents upright conduct?", ["Plumb", "Level", "Square", "Compass"], "a", "The plumb teaches rectitude of conduct."),
-        ("What is represented by the letter 'G'?", ["Geometry and God", "Generosity", "Greatness", "Grace"], "a", "It reminds Masons of the Great Architect of the Universe."),
-        ("Why are stairs winding instead of straight?", ["To symbolize secrecy", "To confuse enemies", "To represent life’s journey", "To test endurance"], "c", "The winding form illustrates moral progression and life's twists."),
-        ("Which pillar is associated with strength?", ["Boaz", "Jachin", "Solomon", "Moses"], "a", "Boaz stands for strength, one of the two pillars."),
-        ("What is the purpose of the tracing board?", ["To instruct", "To sign in", "To record minutes", "To show dues"], "a", "It is a visual aid for learning Masonic lessons."),
-        ("What adorns the porch of King Solomon’s Temple?", ["Two pillars", "A triangle", "A lion and eagle", "A veil"], "a", "The two pillars Boaz and Jachin adorn the porch.")
-    ] "a", "These are symbolic of nourishment, refreshment, and joy, the rewards of labor."),
-        ...
-    ],
+    ],       # Full 30 FC questions will be inserted
     "Master Mason": [
         ("Who was Hiram Abiff?", ["Architect of King Solomon’s Temple", "First Grand Master", "Builder of the Ark", "Keeper of the Temple Scrolls"], "a", "He is the chief architect in Masonic legend representing fidelity."),
         ("What are the three Ruffians’ names?", ["Jubela, Jubelo, Jubelum", "Abiram, Aholiab, Jehoash", "Tyrus, Sidon, Judah", "Jubal, Tubal, Lamech"], "a", "These characters represent betrayal in Masonic teachings."),
@@ -128,24 +109,7 @@ question_bank = {
         ("What is the moral lesson of Hiram’s story?", ["Stand firm in principle", "Obey superiors", "Hide secrets", "Build grand works"], "a", "He chose death over betrayal."),
         ("How is the grave a symbol in this degree?", ["It reminds us of death and resurrection", "It marks the past", "It protects secrets", "It ends the journey"], "a", "It highlights Masonry's teachings on immortality."),
         ("Why is the number three important in this degree?", ["It reflects the three Ruffians and three blows", "It is a mystical number", "It marks rank", "It refers to three kings"], "a", "The number three is symbolic throughout the legend.")
-    ] "a", "He is the chief architect in Masonic legend representing fidelity."),
-        ("What are the three Ruffians’ names?", ["Jubela, Jubelo, Jubelum", "Abiram, Aholiab, Jehoash", "Tyrus, Sidon, Judah", "Jubal, Tubal, Lamech"], "a", "These characters represent betrayal in Masonic teachings."),
-        ("What does the sprig of acacia symbolize?", ["Immortality", "Brotherhood", "New beginnings", "Secrecy"], "a", "It symbolizes the soul's immortality."),
-        ("What is the significance of the Lion’s Paw?", ["Grip used in raising a Master Mason", "Symbol of courage", "Mark of strength", "Jewelry emblem"], "a", "It is the strong grip that raises a fallen brother."),
-        ("What does the Master’s Word represent?", ["Divine truth", "Lost knowledge", "Power", "Royalty"], "b", "It signifies knowledge once possessed but now concealed."),
-        ("What is the emblem of the third degree?", ["Square and Compass", "Skull and Crossbones", "Trowel", "Sprig of Acacia"], "d", "It denotes immortality of the soul."),
-        ("How was Hiram Abiff killed?", ["Struck by three blows", "Poisoned in the temple", "Drowned in the well", "Stabbed by guards"], "a", "The three Ruffians killed him with symbolic tools."),
-        ("Where was Hiram Abiff buried?", ["Under the temple", "Near Mount Moriah", "In the rubbish of the temple", "In the forest"], "c", "He was buried hastily in the temple debris."),
-        ("What do the three steps after raising symbolize?", ["Life, death, rebirth", "Wisdom, strength, beauty", "Mind, body, spirit", "Manhood, strength, age"], "a", "These represent the human journey."),
-        ("What is the substitute word in the third degree?", ["Mah-Ha-Bone", "Hiramic Light", "Jah-Bul-On", "Tubal Cain"], "a", "It stands in place of the lost Master’s Word."),
-        ("What lesson does the grave teach the Mason?", ["Mortality and resurrection", "Work hard in life", "Knowledge is power", "Justice is eternal"], "a", "The grave emphasizes the reality of death and hope of resurrection."),
-        ("What is the duty of a Master Mason?", ["Preserve Masonic secrets", "Protect the Lodge", "Travel abroad", "Write Masonic texts"], "a", "He must keep the ancient landmarks of the order."),
-        ("What jewel is worn by the Worshipful Master?", ["Square", "Trowel", "Level", "Plumb"], "a", "It represents moral rectitude and justice."),
-        ("What does the broken column represent?", ["Untimely death of Hiram", "Wisdom destroyed", "End of journey", "Beginning of rebirth"], "a", "It marks Hiram's death before his work was finished."),
-        ("What do the three ruffians demand of Hiram?", ["The secrets of a Master Mason", "The Ark of the Covenant", "The Holy Writings", "The plans of the temple"], "a", "They sought the Master’s secrets unlawfully.")
-    ], "a", "Hiram Abiff is central to the Master Mason legend, symbolizing fidelity and craftsmanship."),
-        ...
-    ]
+    ]        # Full 30 MM questions will be inserted
 }
 
 # ---- INITIAL STATE ---- #
@@ -193,7 +157,7 @@ if not st.session_state.quiz_started:
 elif not st.session_state.completed:
     q_list = st.session_state.shuffled_questions[st.session_state.degree]
     q_idx = st.session_state.current_q
-    q_text, opts, correct_letter, *explanation = q_list[q_idx]  # extended to support optional explanation
+    q_text, opts, correct_letter, *explanation = q_list[q_idx]
 
     st.image("https://raw.githubusercontent.com/dreamchaserami/try-3/main/Images/phoenix9.png", width=200)
 

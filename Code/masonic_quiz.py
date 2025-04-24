@@ -1,149 +1,120 @@
 import streamlit as st
 import time
 import pandas as pd
+import random
 from datetime import datetime
+
+# ---- ACCESS CODES ---- #
+access_codes = {
+    "Entered Apprentice": "255877",
+    "Fellow Craft": "779311",
+    "Master Mason": "85996170"
+}
 
 # ---- QUESTIONS ---- #
 question_bank = {
     "Entered Apprentice": [
-        ("What are the three great lights?",
-         ["The Holy Bible, Square, Compass", "The trestle board, burning tapers", "The square, plumb, level", "The sun, moon, Worshipful Master"], "a"),
-        ("As an Entered Apprentice, from whence you came?",
-         ["Egypt", "Lodge of H.B. Turner", "Lodge of Due Guard", "Lodge of the Holy Saints John"], "d"),
-        ("What came you here to do?",
-         ["To seek light", "To improve my passions", "To subdue my passions and improve myself in Masonry", "To learn secrets"], "c"),
-        ("Then I presume you are a Mason?",
-         ["I am so taken and acknowledged", "I am", "I received the light", "I'm cautious"], "a"),
-        ("What makes you a Mason?",
-         ["The Bible", "My Obligation", "My Word", "God's Word"], "b"),
-        ("How do you know yourself to be a mason?",
-         ["I know my penalty and signs", "Tried and never denied", "I know my obligation", "I have grip, token, and sign"], "b"),
-        ("How shall I know you to be a mason?",
-         ["Tried and never denied", "Recognized by brothers", "Subduing passions", "Signs, token, word, and entrance"], "d"),
-        ("What are signs?",
-         ["Bible, Square, Compass", "Grip called due guard", "Right angles and perpendiculars", "Three burning tapers"], "c"),
-        ("What is a token?",
-         ["Password from St. John", "Square, level, plumb", "Grip to identify in dark/light", "Your apron"], "c"),
-        ("What do you conceal?",
-         ["My signs and tokens", "My obligation", "All secrets except rightful", "Bible, square, compass"], "c"),
-        ("What is the first degree called?",
-         ["Entered Apprentice", "Fellow Craft", "Master Mason", "Initiate"], "a"),
-        ("What do the three lesser lights represent?",
-         ["Sun, Moon, and Worshipful Master", "Faith, Hope, and Charity", "East, West, and South", "Wisdom, Strength, Beauty"], "a"),
-        ("Where were you prepared to be made a Mason?",
-         ["In a room adjoining the Lodge", "In the West", "In the Outer Chamber", "At the Altar"], "a"),
-        ("How were you prepared?",
-         ["Divested of metals, hoodwinked, and cable-tow about the neck", "Dressed in a white robe", "Wearing gloves and apron", "With Masonic ring"], "a"),
-        ("What is the covering of a Lodge?",
-         ["A clouded canopy or star-decked heaven", "A blue ceiling", "A black curtain", "The altar"], "a"),
+        ("What are the three great lights?", ["The Holy Bible, Square, Compass", "The trestle board, burning tapers", "The square, plumb, level", "The sun, moon, Worshipful Master"], "a"),
+        ("As an Entered Apprentice, from whence you came?", ["Egypt", "Lodge of H.B. Turner", "Lodge of Due Guard", "Lodge of the Holy Saints John"], "d"),
+        ("What came you here to do?", ["To seek light", "To improve my passions", "To subdue my passions and improve myself in Masonry", "To learn secrets"], "c"),
+        ("Then I presume you are a Mason?", ["I am so taken and acknowledged", "I am", "I received the light", "I'm cautious"], "a"),
+        ("What makes you a Mason?", ["The Bible", "My Obligation", "My Word", "God's Word"], "b"),
+        # Additional EA Questions (sampled)
+        ("What is the jewel of an Entered Apprentice?", ["Twenty-four inch gauge", "Plumb", "Level", "Trowel"], "a"),
+        ("What is the covering of a Lodge?", ["A clouded canopy or star-decked heaven", "A blue ceiling", "A black curtain", "The altar"], "a"),
+        ("Where does the Worshipful Master sit?", ["In the East", "In the West", "In the South", "In the North"], "a"),
+        ("What do the three lesser lights represent?", ["Sun, Moon, and Worshipful Master", "Wisdom, Strength, and Beauty", "East, West, and South", "Faith, Hope, and Charity"], "a"),
+        ("Why are you hoodwinked?", ["To represent darkness before receiving light", "To protect your identity", "To humble yourself", "To keep secrets"], "a"),
+        ("How should a Mason act?", ["With upright conduct", "With boldness", "With secrecy", "With joy"], "a"),
+        ("What is a Cable-tow?", ["A rope used in the ceremony", "A Masonic badge", "A tracing board", "A building tool"], "a"),
+        ("What is the first duty of an Entered Apprentice?", ["To seek light", "To pay dues", "To vote", "To memorize ritual"], "a"),
+        ("What is the flooring of a Lodge called?", ["Mosaic pavement", "Tracing board", "Working floor", "Sacred space"], "a"),
+        ("Why do you wear a lambskin apron?", ["Badge of a Mason", "Symbol of labor", "Tool of work", "Representation of purity"], "a")
     ],
     "Fellow Craft": [
-        ("What is the wage of a Fellow Craft?",
-         ["Corn, wine, oil", "Knowledge and wisdom", "Five orders of architecture", "Brotherly love, relief, truth"], "a"),
-        ("Where is the winding staircase?",
-         ["Second degree lodge", "East side of the temple", "Between pillars", "Behind the altar"], "a"),
-        ("How many steps lead to the Middle Chamber?",
-         ["3", "7", "15", "33"], "c"),
-        ("What do the three steps represent?",
-         ["Youth, manhood, age", "Faith, hope, charity", "Earth, wind, fire", "Heaven, earth, sea"], "a"),
-        ("What are the five orders of architecture?",
-         ["Doric, Ionic, Corinthian, Composite, Tuscan", "Greek, Roman, Gothic, Modern, Renaissance", "Arch, Pillar, Keystone, Truss, Beam", "Romanesque, Gothic, Doric, Ionic, Baroque"], "a"),
-        ("What do the Seven Liberal Arts and Sciences represent?",
-         ["Basis of Masonic education", "Masonic virtues", "Jewels of the Lodge", "Levels of initiation"], "a"),
-        ("Which art includes the study of speech?",
-         ["Logic", "Rhetoric", "Grammar", "Astronomy"], "b"),
-        ("Which art involves mathematical principles?",
-         ["Arithmetic", "Logic", "Grammar", "Astronomy"], "a"),
-        ("What does the Middle Chamber symbolize?",
-         ["Temple of Solomon", "Masonic enlightenment", "Mystical gateway", "Spiritual reward"], "b"),
-        ("What tool represents upright conduct?",
-         ["Plumb", "Level", "Square", "Compass"], "a"),
-        ("What is represented by the letter 'G'?",
-         ["Geometry and God", "Generosity", "Greatness", "Grace"], "a"),
-        ("Why are stairs winding instead of straight?",
-         ["To symbolize secrecy", "To confuse enemies", "To represent life’s journey", "To test endurance"], "c"),
-        ("Which pillar is associated with strength?",
-         ["Boaz", "Jachin", "Solomon", "Moses"], "a"),
-        ("What is the purpose of the tracing board?",
-         ["To instruct", "To sign in", "To record minutes", "To show dues"], "a"),
-        ("What adorns the porch of King Solomon’s Temple?",
-         ["Two pillars", "A triangle", "A lion and eagle", "A veil"], "a"),
+        ("What is the wage of a Fellow Craft?", ["Corn, wine, oil", "Knowledge and wisdom", "Five orders of architecture", "Brotherly love, relief, truth"], "a"),
+        ("Where is the winding staircase?", ["Second degree lodge", "East side of the temple", "Between pillars", "Behind the altar"], "a"),
+        # Additional FC Questions (sampled)
+        ("What do the five senses represent in Masonry?", ["Ways of learning", "Degrees", "Working tools", "Temple pillars"], "a"),
+        ("What is the importance of architecture in the 2nd degree?", ["Symbol of strength", "Foundation of Masonry", "Represents beauty", "Sign of completion"], "b"),
+        ("What do the Seven Liberal Arts and Sciences represent?", ["Basis of Masonic education", "Masonic virtues", "Jewels of the Lodge", "Levels of initiation"], "a"),
+        ("What is rhetoric?", ["The art of persuasive speech", "Study of geometry", "Style of clothing", "A tool of the Lodge"], "a"),
+        ("What pillar is strength?", ["Boaz", "Jachin", "Solomon", "Moses"], "a"),
+        ("What does the Level symbolize?", ["Equality", "Justice", "Wisdom", "Charity"], "a"),
+        ("What does Grammar teach a Mason?", ["Proper speech and writing", "Geometric design", "Symbolism", "Order"], "a"),
+        ("What does Arithmetic teach?", ["Number and measurement", "Prayer and patience", "Tools of a Mason", "Light"], "a"),
+        ("How many steps to Middle Chamber?", ["15", "12", "7", "3"], "a"),
+        ("What does Astronomy teach a Mason?", ["Order and harmony", "Zodiac symbols", "Faith and truth", "Travel"], "a"),
+        ("What adorns the Porch of Solomon's Temple?", ["Two pillars", "A lion", "A globe", "Curtains"], "a"),
+        ("What does the Plumb symbolize?", ["Uprightness", "Measurement", "Time", "Respect"], "a")
     ],
     "Master Mason": [
-        ("Who was Hiram Abiff?",
-         ["Architect of King Solomon’s Temple", "First Grand Master", "Builder of the Ark", "Keeper of the Temple Scrolls"], "a"),
-        ("What are the three Ruffians’ names?",
-         ["Jubela, Jubelo, Jubelum", "Abiram, Aholiab, Jehoash", "Tyrus, Sidon, Judah", "Jubal, Tubal, Lamech"], "a"),
-        ("What does the sprig of acacia symbolize?",
-         ["Immortality", "Brotherhood", "New beginnings", "Secrecy"], "c"),
-        ("What is the significance of the Lion’s Paw?",
-         ["Grip used in raising a Master Mason", "Symbol of courage", "Mark of strength", "Jewelry emblem"], "a"),
-        ("What does the Master’s Word represent?",
-         ["Divine truth", "Lost knowledge", "Power", "Royalty"], "b"),
-        ("What is the emblem of the third degree?",
-         ["Square and Compass", "Skull and Crossbones", "Trowel", "Sprig of Acacia"], "d"),
-        ("How was Hiram Abiff killed?",
-         ["Struck by three blows", "Poisoned in the temple", "Drowned in the well", "Stabbed by guards"], "a"),
-        ("Where was Hiram Abiff buried?",
-         ["Under the temple", "Near Mount Moriah", "In the rubbish of the temple", "In the forest"], "c"),
-        ("What do the three steps after raising symbolize?",
-         ["Life, death, rebirth", "Wisdom, strength, beauty", "Mind, body, spirit", "Manhood, strength, age"], "a"),
-        ("What is the substitute word in the third degree?",
-         ["Mah-Ha-Bone", "Hiramic Light", "Jah-Bul-On", "Tubal Cain"], "a"),
-        ("What lesson does the grave teach the Mason?",
-         ["Mortality and resurrection", "Work hard in life", "Knowledge is power", "Justice is eternal"], "a"),
-        ("What is the duty of a Master Mason?",
-         ["Preserve Masonic secrets", "Protect the Lodge", "Travel abroad", "Write Masonic texts"], "a"),
-        ("What jewel is worn by the Worshipful Master?",
-         ["Square", "Trowel", "Level", "Plumb"], "a"),
-        ("What does the broken column represent?",
-         ["Untimely death of Hiram", "Wisdom destroyed", "End of journey", "Beginning of rebirth"], "a"),
-        ("What do the three ruffians demand of Hiram?",
-         ["The secrets of a Master Mason", "The Ark of the Covenant", "The Holy Writings", "The plans of the temple"], "a"),
+        ("Who was Hiram Abiff?", ["Architect of King Solomon’s Temple", "First Grand Master", "Builder of the Ark", "Keeper of the Temple Scrolls"], "a"),
+        ("What are the three Ruffians’ names?", ["Jubela, Jubelo, Jubelum", "Abiram, Aholiab, Jehoash", "Tyrus, Sidon, Judah", "Jubal, Tubal, Lamech"], "a"),
+        # Additional MM Questions (sampled)
+        ("What does the trowel symbolize?", ["Spreading brotherly love", "Mortar of unity", "Tool of a Mason", "Secrecy"], "a"),
+        ("What are Masonic landmarks?", ["Unchanging principles", "Temple stones", "Initiation rites", "Meeting places"], "a"),
+        ("What does the broken column represent?", ["Untimely death of Hiram", "Wisdom destroyed", "End of journey", "Beginning of rebirth"], "a"),
+        ("What is the significance of the grave?", ["Mortality and resurrection", "Secrets of life", "Path of light", "Time eternal"], "a"),
+        ("What do the lion's paw and strong grip represent?", ["Raising from darkness", "Obligation", "Unity", "Reward"], "a"),
+        ("What is the role of the Worshipful Master?", ["Preside over the Lodge", "Lead prayers", "Manage finances", "Teach songs"], "a"),
+        ("What is the highest honor in Masonry?", ["Master Mason", "Worshipful Master", "Past Master", "Grand Master"], "a"),
+        ("What is Mah-Ha-Bone?", ["Substitute word", "Ritual item", "Temple stone", "Code"], "a"),
+        ("What is the setting of the 3rd degree?", ["Temple building site", "Outer court", "Lodge room", "East gate"], "a"),
+        ("Who protects the secrets?", ["Master Masons", "Entered Apprentices", "Fellow Crafts", "All Brothers"], "a"),
+        ("What is the Mason’s reward?", ["Light", "Obedience", "Wisdom", "Travel"], "a"),
+        ("What is the apron a symbol of?", ["Service and labor", "Pride and ego", "Wisdom and strength", "Unity"], "a")
     ]
 }
 
 # ---- INITIAL STATE ---- #
-if 'name' not in st.session_state: st.session_state.name = ""
-if 'degree' not in st.session_state: st.session_state.degree = "Entered Apprentice"
-if 'quiz_started' not in st.session_state: st.session_state.quiz_started = False
-if 'current_q' not in st.session_state: st.session_state.current_q = 0
-if 'score' not in st.session_state: st.session_state.score = 0
-if 'completed' not in st.session_state: st.session_state.completed = False
-if 'user_answers' not in st.session_state: st.session_state.user_answers = []
-if 'start_time' not in st.session_state: st.session_state.start_time = None
+for key, default in {
+    'name': "",
+    'degree': "Entered Apprentice",
+    'quiz_started': False,
+    'current_q': 0,
+    'score': 0,
+    'completed': False,
+    'user_answers': [],
+    'start_time': None,
+    'shuffled_questions': None
+}.items():
+    if key not in st.session_state:
+        st.session_state[key] = default
 
 # ---- CONFIG ---- #
 st.set_page_config(page_title="Phoenix Nine Proficiency Exam", layout="centered")
 st.title("🔥 Phoenix Nine Proficiency Exam")
 
-# ---- QUIZ SETUP ---- #
+# ---- START FORM ---- #
 if not st.session_state.quiz_started:
     with st.form("start_form"):
-        st.image("Code/phoenix9.png", width=350)
-
-
-
-
-
+        st.image("https://raw.githubusercontent.com/dreamchaserami/try-3/main/Images/phoenix9.png", width=350)
         st.session_state.name = st.text_input("Enter your name:")
         st.session_state.degree = st.selectbox("Select Degree Level:", list(question_bank.keys()))
+        access_code = st.text_input("Enter access code for selected degree:")
         start_clicked = st.form_submit_button("Start Quiz")
 
         if start_clicked and st.session_state.name:
-            st.session_state.quiz_started = True
-            st.session_state.start_time = time.time()
-            st.success(f"Welcome Brother {st.session_state.name}, let's begin the {st.session_state.degree} quiz.")
-            st.rerun()
+            correct_code = access_codes.get(st.session_state.degree)
+            if access_code == correct_code:
+                st.session_state.quiz_started = True
+                st.session_state.start_time = time.time()
+                st.session_state.shuffled_questions = {
+                    deg: random.sample(questions, len(questions)) for deg, questions in question_bank.items()
+                }
+                st.success(f"Welcome Brother {st.session_state.name}, let's begin the {st.session_state.degree} quiz.")
+                st.rerun()
+            else:
+                st.error("Invalid access code. Please try again.")
 
 # ---- QUIZ LOOP ---- #
 elif not st.session_state.completed:
-    q_list = question_bank[st.session_state.degree]
+    q_list = st.session_state.shuffled_questions[st.session_state.degree]
     q_idx = st.session_state.current_q
     q_text, opts, correct_letter = q_list[q_idx]
 
     st.image("https://raw.githubusercontent.com/dreamchaserami/try-3/main/Images/phoenix9.png", width=200)
-
 
     st.progress(q_idx / len(q_list))
     st.subheader(f"Question {q_idx + 1} of {len(q_list)}")
@@ -184,7 +155,7 @@ elif not st.session_state.completed:
 
 # ---- QUIZ COMPLETE ---- #
 if st.session_state.completed:
-    total = len(question_bank[st.session_state.degree])
+    total = len(st.session_state.shuffled_questions[st.session_state.degree])
     st.success(f"{st.session_state.name}, you scored {st.session_state.score} out of {total}.")
 
     if st.session_state.score == total:
